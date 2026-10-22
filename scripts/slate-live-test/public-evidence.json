@@ -1,0 +1,122 @@
+{
+  "contract": "0x256C6a981f690cEA26e1a4093b059191bD7181e5",
+  "network": "GenLayer Studio Dev",
+  "chain_id": 61997,
+  "rpc": "https://studio-dev.genlayer.com/api",
+  "source_sha256": "96ce8c170ee5da21d8e2f7f07d13d0b993a996dccc90e68fa2b2268212908cc8",
+  "source_bytes": 51792,
+  "wallets": {
+    "owner_agent_reviewer_1": "0xc29df1b6a5351c413511b6b3609f2ffb63655b07",
+    "reviewer_2": "0xf4a312d1e3dc43e445ae534c2d52c56ce49bfcca",
+    "reviewer_3": "0x7709e0d3874500c4c25c35161c990d7732480cf8"
+  },
+  "organization_id": "org-d94a4094f1a7319bcf6cf857b653f471dbcd160edbec2b01523f7a2d805d08af",
+  "resource_id": "rsc-1060117ebf82f92a170e1fd4cbdecea2f8c72d2894eefc2d91c61ff029b15ae5",
+  "amendment_id": "amd-b60bdea78f3d2fcd27db39bc50f917555d7d720b07694fd36fd74a9bcc1a6619",
+  "policy_versions": {
+    "1": "pol-5d5fd6ea5954a258d906aa77d52ca1a44daeed27307505263a6f4279ed33beb2",
+    "2": "pol-12f596ed79cfd0b7aa7d24d40bbdedc5057783a98586060d380d3b68121bbed6"
+  },
+  "action_decisions": {
+    "v1": {
+      "id": "act-f5ac4eb6ab38027c5041fe0d5da1d3e89fefe87dd574cbc93c7ca4ede10a41a4",
+      "semantic_status": "DENY",
+      "policy_version": 1,
+      "enabled_before": false,
+      "enabled_after": false
+    },
+    "v2": {
+      "id": "act-87311372ddc23b6ffd3e4fd85e9d48135a99bd4058b20c1518f1dbb0047dc222",
+      "semantic_status": "ALLOW",
+      "policy_version": 2,
+      "enabled_before": false,
+      "enabled_after": true
+    }
+  },
+  "final_state": {
+    "active_policy_version": 2,
+    "resource_enabled": true,
+    "amendment_status": "ACTIVATED",
+    "pending_amendment": ""
+  },
+  "transaction_defaults": {
+    "consensus_status": "FINALIZED",
+    "execution_result": "FINISHED_WITH_RETURN",
+    "explorer_base": "https://explorer-studio-dev.genlayer.com/tx/"
+  },
+  "transactions": [
+    {
+      "operation": "create_organization",
+      "hash": "0xe8881f2deff84e597365f533185cc34a69d5d0991e94a37f1761d662a23941c0",
+      "primary_fee_spent_wei": "78644250000823",
+      "result": "organization and policy version 1 created"
+    },
+    {
+      "operation": "register_resource",
+      "hash": "0x555bc16eb3ed7e7d963f5543fb82fc18caee7f7fb43a6c5f306d5949313d77f6",
+      "primary_fee_spent_wei": "78642000000823",
+      "result": "resource created disabled"
+    },
+    {
+      "operation": "apply_agent_action_v1",
+      "hash": "0x7140e39d9d9a66f53e06d19e43a5bd9c62ebfe45505996854cb3f6626be4f84b",
+      "primary_fee_spent_wei": "78706000000823",
+      "result": "DENY; resource remained disabled"
+    },
+    {
+      "operation": "propose_amendment",
+      "hash": "0x0b9621c2ca281912fd611c47be31be290f2d2cbdc1e9856249b928c03772d891",
+      "primary_fee_spent_wei": "78649750000823",
+      "result": "amendment proposed against policy version 1"
+    },
+    {
+      "operation": "classify_amendment",
+      "hash": "0x5a160bbed7ed51339bccecca1b9ddee4e80b3bbcb1ce0b6952cb90479efa48c5",
+      "primary_fee_spent_wei": "78816000000823",
+      "result": "EXPANDS; required approvals 3"
+    },
+    {
+      "operation": "vote_reviewer_1",
+      "hash": "0x4ad62f6a46e6bc8617468aae517431b3910e8300a2217518b210ed3428f3a0b8",
+      "primary_fee_spent_wei": "78644000000823",
+      "result": "approval 1 of 3"
+    },
+    {
+      "operation": "vote_reviewer_2",
+      "hash": "0xc70226bf353ac6dce4f34edcd5bfd02908dc30c581c5a557a2976dabdefbd79c",
+      "primary_fee_spent_wei": "78644000000823",
+      "result": "approval 2 of 3; amendment remained CLASSIFIED"
+    },
+    {
+      "operation": "vote_reviewer_3",
+      "hash": "0xcdc4fd0915e25194e342ac1943f52642a09753cc083ecbf85b246301b27109d5",
+      "primary_fee_spent_wei": "78644250000823",
+      "result": "approval 3 of 3; amendment READY"
+    },
+    {
+      "operation": "activate_amendment",
+      "hash": "0xeb491993504f36b922b075faa8d456ade6203ae1ccd7a3cb61c14d2eb2d99d6d",
+      "primary_fee_spent_wei": "78656000000823",
+      "result": "policy version 2 activated"
+    },
+    {
+      "operation": "apply_agent_action_v2",
+      "hash": "0x291115c603c961d645f962b8e4bb7b125f6d3ae9f22588c2f45e15e9f7f21a59",
+      "primary_fee_spent_wei": "78715250000823",
+      "result": "ALLOW; resource enabled"
+    }
+  ],
+  "fee_summary": {
+    "successful_transaction_count": 10,
+    "actual_primary_fee_spent_wei": "786761500008230",
+    "actual_primary_fee_spent_gen": "0.00078676150000823",
+    "estimated_fee_deposits_wei": "3787437600103520",
+    "estimated_fee_deposits_gen": "0.00378743760010352"
+  },
+  "excluded_precontract_failure": {
+    "hash": "0x99a54bf6728bd93e7054ae4add71f3bf4fb9eacb262ad748a3999a7458f1eb6e",
+    "status": "REJECTED_BEFORE_CONTRACT",
+    "error": "FEE_VALIDATION_ERROR: FeeValueMustBeNonZero",
+    "state_change": false
+  }
+}

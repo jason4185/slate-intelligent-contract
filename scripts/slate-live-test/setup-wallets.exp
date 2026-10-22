@@ -1,0 +1,64 @@
+#!/usr/bin/expect -f
+
+# Creates fresh CLI keystores through the official interactive prompt, then
+# caches each decrypted key in the OS keychain. Passwords exist only in this
+# process memory and are never written to the project or passed as arguments.
+set timeout 120
+log_user 0
+
+set accounts {slate-owner-agent slate-reviewer-2 slate-reviewer-3}
+foreach account $accounts {
+    set password [string trim [exec openssl rand -hex 32]]
+
+    spawn genlayer account create --name $account --no-set-active
+    expect {
+        -re {Enter a password to encrypt your keystore.*:} {
+            send -- "$password\r"
+        }
+        eof {}
+        timeout {puts stderr "Timed out creating $account"; exit 1}
+    }
+    expect {
+        -re {Confirm password.*:} { send -- "$password\r" }
+        eof {}
+        timeout {puts stderr "Timed out confirming $account"; exit 1}
+    }
+    expect {
+        eof {}
+        timeout {puts stderr "Timed out waiting for $account creation"; exit 1}
+    }
+    set create_status [lindex [wait] 3]
+    if {$create_status != 0} {
+        puts stderr "Account creation failed for $account"
+        exit 1
+    }
+
+    spawn genlayer account unlock --account $account
+    expect {
+        -re {Enter password to unlock.*:} {
+            send -- "$password\r"
+        }
+        eof {}
+        timeout {puts stderr "Timed out unlocking $account"; exit 1}
+    }
+    expect {
+        eof {}
+        timeout {puts stderr "Timed out waiting for $account unlock"; exit 1}
+    }
+    set unlock_status [lindex [wait] 3]
+    if {$unlock_status != 0} {
+        puts stderr "Account unlock failed for $account"
+        exit 1
+    }
+    unset password
+}
+
+log_user 1
+spawn genlayer account list
+expect eof
+set list_status [lindex [wait] 3]
+if {$list_status == 0} {
+    set wallet_json [exec python3 scripts/slate-live-test/collect_wallets.py]
+    puts $wallet_json
+}
+exit $list_status

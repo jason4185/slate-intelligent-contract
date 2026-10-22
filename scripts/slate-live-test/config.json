@@ -1,0 +1,22 @@
+{
+  "network": "studio-dev",
+  "chain_id": 61997,
+  "rpc": "https://studio-dev.genlayer.com/api",
+  "contract": "0x256C6a981f690cEA26e1a4093b059191bD7181e5",
+  "source_sha256": "96ce8c170ee5da21d8e2f7f07d13d0b993a996dccc90e68fa2b2268212908cc8",
+  "source_bytes": 51792,
+  "wallet_names": {
+    "owner_agent_reviewer1": "slate-owner-agent",
+    "reviewer2": "slate-reviewer-2",
+    "reviewer3": "slate-reviewer-3"
+  },
+  "scenario": {
+    "organization_name": "Atlas Operations",
+    "initial_policy": "The authorized agent may enable or disable internal monitoring resources for legitimate operational purposes. The agent must not enable customer-facing notification resources. Disabling customer-facing notification resources is permitted for operational safety.",
+    "proposed_policy": "The authorized agent may enable or disable internal monitoring resources for legitimate operational purposes. The authorized agent may also enable or disable customer-facing notification resources for legitimate operational purposes, including sending customer order updates, transaction receipts, and account alerts.",
+    "rationale": "Expand the authorized agent's operating permissions to include customer-facing notification resources while preserving the existing permission to manage internal monitoring resources.",
+    "resource_key": "customer-notifications",
+    "resource_description": "Customer-facing email notifications that send order updates, transaction receipts, and account alerts to customers.",
+    "purpose": "Enable customer-facing email notifications to send order updates and transaction receipts to customers."
+  }
+}
